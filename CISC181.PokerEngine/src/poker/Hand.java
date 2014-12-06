@@ -3,13 +3,28 @@ package poker;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "PokerResults")
 
 public class Hand {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMP")
+	@SequenceGenerator(name = "SEQ_HAND", sequenceName = "SEQ_HAND", allocationSize = 1)
+	@Column(name = "id")
+	
 	private ArrayList<Card> CardsInHand;
 
+	private int id;
+	
+	@Column(name = "HAND_STRENGTH")
 	private int HandStrength;
+	@Column(name = "HI_HAND")
 	private int HiHand;
+	@Column(name = "LO_HAND")
 	private int LoHand;
+	@Column(name = "Kicker")
 	private int Kicker;
 	private boolean bScored = false;
 
